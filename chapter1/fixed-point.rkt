@@ -1,5 +1,8 @@
 #lang racket
 
+; Note that this file needs to be in racket lang because this
+; file uses "provide".
+
 (define tolerance 0.00001)
 
 (define (fixed-point f first-guess)
