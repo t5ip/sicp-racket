@@ -3,4 +3,4 @@
 ; Note that require needs racket lang. Thus the #%require
 (#%require "fixed-point.rkt")
 
-(fixed-point cos 1)
+; under construction
