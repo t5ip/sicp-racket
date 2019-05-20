@@ -3,4 +3,13 @@
 ; Note that require needs racket lang. Thus the #%require
 (#%require "fixed-point.rkt")
 
-; under construction
+(define (term x)
+  (/ (log 1000) (log x)))
+  
+(display "No average damping: ")
+(newline)
+(fixed-point term 3)
+(display "Average damping in use: ")
+(newline)
+(fixed-point (lambda (x)
+               (/ (+ (term x) (term (term x))) 2)) 3)

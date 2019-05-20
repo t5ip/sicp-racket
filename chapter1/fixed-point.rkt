@@ -8,12 +8,15 @@
 (define (fixed-point f first-guess)
   (define (close-enough? v1 v2)
     (< (abs (- v1 v2)) tolerance))
-  (define (try guess)
+  (define (try guess step)
+    (display step)
+    (display " ")
+    (display guess)
+    (newline)
     (let ((next (f guess)))
       (if (close-enough? guess next)
           next
-          (try next))))
-  (try first-guess))
-
+          (try next (+ step 1)))))
+  (try first-guess 0))
 
 (provide fixed-point)
