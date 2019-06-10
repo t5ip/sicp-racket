@@ -1,4 +1,4 @@
-#lang sicp
+#lang racket
 
 (define (inc x)
   (+ x 1))
@@ -16,4 +16,8 @@
   (lambda (x)
     (repeat f x n)))
 
-((repeated square 2) 5)
+;((repeated square 2) 5)
+
+(provide repeat)
+
+(provide repeated)
