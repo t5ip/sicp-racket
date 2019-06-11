@@ -4,9 +4,13 @@
 (#%require "fixed-point.rkt")
 (#%require "1.43.rkt")
 
-(define (g x)
-  (lambda (y) (/ x y)))
+(define (pow x n)
+  (cond ((= n 0) 1)
+  (else (* x (pow x (- n 1))))))
 
-(define (sqrt x)
-  (fixed-point (average-damp (g x)) 1))
+(define (g x n)
+  (lambda (y) (/ x (pow y n))))
+
+(define (n-root x n)
+  (fixed-point (average-damp (g x (- n 1))) 1))
 
