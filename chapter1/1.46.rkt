@@ -1,11 +1,10 @@
 #lang sicp
 
-(define (iterate guess x good-enough? improve)
-  (cond ((good-enough? guess x) guess)
-        (else (iterate (improve guess x) x good-enough? improve))))
-
 (define (iterative-improve good-enough? improve)
-  (lambda (guess x) (iterate guess x good-enough? improve)))
+  (define (iterate guess x)
+  (cond ((good-enough? guess x) guess)
+        (else (iterate (improve guess x) x))))
+  (lambda (guess x) (iterate guess x)))
 
 ; sqrt
 
@@ -20,3 +19,12 @@
 
 (define (good-enough-sqrt? guess x)
   (< (abs (- (square guess) x)) 0.001))
+
+(define (sqrt x)
+  ((iterative-improve good-enough-sqrt? improve-sqrt) 1.0 x))
+
+;test 
+
+(sqrt 2)
+(sqrt 9)
+(sqrt 10000)
